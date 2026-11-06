@@ -1,0 +1,24 @@
+name: Listar o abrir carpeta en GitHub Actions
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Permite ejecutarlo manualmente desde la pestaña Actions
+
+jobs:
+  explorar-carpeta:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Descarga el código del repositorio en el runner
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      # 2. Comando para verificar y abrir/listar el contenido de la carpeta
+      - name: Listar contenido de la carpeta
+        run: |
+          echo "Contenido de la carpeta principal:"
+          ls -la
+          
+          echo "--- Contenido de la carpeta específica ---"
+          ls -la ./mi-carpeta
